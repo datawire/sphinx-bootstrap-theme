@@ -40,6 +40,20 @@
     findA($ul);
   };
 
+  var datawirePatchTOC = function ($ul) {
+    // Find all the top level TOC pages:
+    var childrenLi = $ul.find('li').clone();
+    // Clear the nav bar:
+    $ul.empty()
+    // Add each top level TOC page as a button on the Nav bar:
+    // TODO:  highlight/emphasize current
+    childrenLi.each(function(index, item) {
+      var $item = $(item);
+      $item.removeClass();
+      $ul.append($item);
+    });
+  };
+
   /**
    * Patch all tables to remove ``docutils`` class and add Bootstrap base
    * ``table`` class.
@@ -79,7 +93,9 @@
 
     // Global TOC.
     if ($("ul.globaltoc li").length) {
-      patchToc($("ul.globaltoc"), 1);
+      var $ul = $("ul.globaltoc");
+      patchToc($ul, 1);
+      datawirePatchTOC($ul)
     } else {
       // Remove Global TOC.
       $(".globaltoc-container").remove();

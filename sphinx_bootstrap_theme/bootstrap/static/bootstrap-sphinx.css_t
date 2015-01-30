@@ -5,6 +5,10 @@
  * Sphinx stylesheet -- Bootstrap theme.
  */
 
+body {
+  font-size: 16px;
+}
+
 .navbar-inverse .brand {
   color: #FFF;
 }
